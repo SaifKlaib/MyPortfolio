@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "title": "Full Stack Developer",
+    "subtitle": "I build things that work... most of the time 😄",
+    "cta": "View My Work"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A showcase of my work and side projects",
+    "filter": "Filter by technology",
+    "viewLive": "Live Demo",
+    "viewCode": "View Code",
+    "viewCase": "Case Study"
+  },
+  "about": {
+    "title": "About Me",
+    "skillsTitle": "Skills & Technologies",
+    "intro1": "Hi! I'm {name}, a passionate full-stack developer who loves building beautiful and functional web applications. I enjoy solving complex problems and creating delightful user experiences.",
+    "intro2": "When I'm not coding, you can find me exploring new technologies, contributing to open source, or enjoying a good cup of coffee ☕",
+    "funFactTitle": "Fun Fact",
+    "funFact": "I once spent 3 hours debugging a problem, only to realize I had a typo in a variable name. Classic developer moment! 😅"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's work together on your next project",
+    "email": "Email",
+    "social": "Social",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "playfulMessage": "📬 I usually respond within 24 hours (unless I'm debugging something... then it might be 48 😄)"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "built": "Built with Next.js & TypeScript"
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
+  "language": {
+    "en": "English",
+    "ar": "العربية"
+  },
+  "notFound": {
+    "title": "Lost in Code",
+    "subtitle": "This page doesn't exist... yet! 🚀",
+    "home": "Back to Home",
+    "message": "(Don't worry, we all take wrong turns sometimes 😄)"
+  }
+}

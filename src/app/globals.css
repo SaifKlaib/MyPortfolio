@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    /* Light mode - Vibrant & Playful */
+    --color-background: oklch(100% 0 0);
+    --color-foreground: oklch(20% 0 0);
+    --color-card: oklch(98% 0 0);
+    --color-card-foreground: oklch(20% 0 0);
+
+    /* Primary: Electric Lime/Green - Bold and energetic */
+    --color-primary: oklch(65% 0.20 130);
+    --color-primary-foreground: oklch(98% 0 0);
+
+    /* Secondary: Soft Purple */
+    --color-secondary: oklch(55% 0.15 290);
+    --color-secondary-foreground: oklch(98% 0 0);
+
+    /* Accent: Warm Amber */
+    --color-accent: oklch(60% 0.15 50);
+    --color-accent-foreground: oklch(98% 0 0);
+
+    --color-muted: oklch(95% 0 0);
+    --color-muted-foreground: oklch(50% 0 0);
+
+    --color-border: oklch(90% 0 0);
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark mode - Deep & Moody with neon accents */
+    --color-background: oklch(15% 0.01 270);
+    --color-foreground: oklch(95% 0 0);
+    --color-card: oklch(20% 0.01 270);
+    --color-card-foreground: oklch(95% 0 0);
+
+    /* Primary: Brighter lime for dark mode */
+    --color-primary: oklch(75% 0.22 130);
+    --color-primary-foreground: oklch(15% 0.01 270);
+
+    /* Secondary: Vibrant purple */
+    --color-secondary: oklch(65% 0.20 290);
+    --color-secondary-foreground: oklch(98% 0 0);
+
+    /* Accent: Electric pink */
+    --color-accent: oklch(70% 0.20 350);
+    --color-accent-foreground: oklch(98% 0 0);
+
+    --color-muted: oklch(25% 0.01 270);
+    --color-muted-foreground: oklch(65% 0 0);
+
+    --color-border: oklch(30% 0.01 270);
+  }
+}
+
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+body {
+  font-feature-settings: "rlig" 1, "calt" 1;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="ltr"] {
+  direction: ltr;
+}
+
+/* Wave animation for emoji */
+@keyframes wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  10%, 30% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(14deg);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+}
+
+.wave {
+  animation: wave 2.5s ease-in-out infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+/* Background pattern for visual interest */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Gradient text effect */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-text {
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary),
+    var(--color-accent)
+  );
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Glow effect for interactive elements */
+.glow-effect {
+  box-shadow:
+    0 0 20px -5px color-mix(in oklch, var(--color-primary), transparent 70%),
+    0 0 40px -10px color-mix(in oklch, var(--color-primary), transparent 80%);
+}
+
+.dark .glow-effect {
+  box-shadow:
+    0 0 30px -5px color-mix(in oklch, var(--color-primary), transparent 50%),
+    0 0 60px -10px color-mix(in oklch, var(--color-primary), transparent 70%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklch, var(--color-muted-foreground), transparent 70%);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklch, var(--color-primary), transparent 50%);
+}
+
+/* Selection color */
+::selection {
+  background: color-mix(in oklch, var(--color-primary), transparent 70%);
+  color: var(--color-foreground);
+}
+
+/* Focus visible styles */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .wave {
+    animation: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
