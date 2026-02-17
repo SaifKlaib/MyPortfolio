@@ -56,7 +56,7 @@ function PhotoWithBadge() {
         transition={{ duration: 0.35 }}
       >
         <img
-          src="/images/Gemini_Generated_Image_apqoyuapqoyuapqo.png"
+          src="/images/Untitled design (1).png"
           alt="Saif Klaib"
           className="w-full h-full object-contain object-bottom"
           draggable={false}
