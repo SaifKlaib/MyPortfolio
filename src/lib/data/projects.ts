@@ -4,139 +4,159 @@ export const projects: Project[] = [
   {
     id: 1,
     title: {
-      en: 'E-Commerce Platform',
-      ar: 'منصة تجارة إلكترونية'
+      en: 'Global Investment Summit',
+      ar: 'قمة الاستثمار العالمية'
     },
     description: {
-      en: 'A full-featured online store with cart, payments, and admin dashboard',
-      ar: 'متجر إلكتروني متكامل مع سلة تسوق ومدفوعات ولوحة تحكم'
+      en: 'Official summit website for global investors and international delegates',
+      ar: 'الموقع الرسمي للقمة الاستثمارية العالمية للمستثمرين والوفود الدولية'
     },
     longDescription: {
-      en: 'Built a complete e-commerce solution with Next.js and Stripe integration. Features include product catalog, shopping cart, secure checkout, order management, and an admin dashboard for inventory management.',
-      ar: 'تم بناء حل تجارة إلكترونية متكامل باستخدام Next.js وتكامل Stripe. يتضمن كتالوج منتجات، سلة تسوق، دفع آمن، إدارة الطلبات، ولوحة تحكم للمخزون.'
+      en: 'Designed and built the official web presence for a large-scale international investment summit. The site handles event registration, sponsor showcases, speaker profiles, agenda management, and multilingual content for a global audience.',
+      ar: 'تصميم وبناء الموقع الرسمي لقمة استثمارية دولية واسعة النطاق. يدير الموقع تسجيل الفعاليات، وعروض الرعاة، وملفات المتحدثين، وإدارة جداول الأعمال، والمحتوى متعدد اللغات للجمهور العالمي.'
     },
     challenge: {
-      en: 'Managing complex shared state across the cart, checkout flow, and admin dashboard while keeping inventory in sync with concurrent users placing orders.',
-      ar: 'إدارة الحالة المشتركة المعقدة عبر سلة التسوق وعملية الدفع ولوحة الإدارة مع الحفاظ على تزامن المخزون مع طلبات المستخدمين المتزامنة.'
+      en: 'Delivering a high-performance, bilingual event site under a tight deadline while handling complex dynamic content such as live schedules, sponsor tiers, and delegate registration.',
+      ar: 'تسليم موقع فعالية ثنائي اللغة عالي الأداء في ظل موعد نهائي ضيق مع التعامل مع محتوى ديناميكي معقد مثل الجداول الزمنية المباشرة وطبقات الرعاة وتسجيل المندوبين.'
     },
     solution: {
-      en: 'Used Redux Toolkit with optimistic updates for instant UI feedback, Stripe webhooks to drive order state transitions server-side, and Next.js ISR to keep product pages fast without stale data.',
-      ar: 'استخدمت Redux Toolkit مع التحديثات المتفائلة لاستجابة فورية للواجهة، وخطافات Stripe لإدارة حالة الطلبات من جانب الخادم، وـ ISR في Next.js للحفاظ على سرعة صفحات المنتجات بدون بيانات منتهية الصلاحية.'
+      en: 'Built on WordPress with Elementor for rapid visual assembly, custom PHP modules for registration logic, and ACF for structured multilingual content management.',
+      ar: 'بُني على WordPress مع Elementor للتجميع البصري السريع، وموديولات PHP مخصصة لمنطق التسجيل، وـ ACF لإدارة المحتوى متعدد اللغات بشكل منظم.'
     },
-    tags: ['Next.js', 'TypeScript', 'Stripe', 'Tailwind CSS'],
-    thumbnail: '/images/projects/ecommerce.jpg',
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/username/project',
+    tags: ['WordPress', 'Elementor', 'PHP', 'ACF'],
+    thumbnail: '/images/projects/gis.jpg',
     featured: true
   },
   {
     id: 2,
     title: {
-      en: 'Task Management App',
-      ar: 'تطبيق إدارة المهام'
+      en: 'Rep By Rep',
+      ar: 'Rep By Rep'
     },
     description: {
-      en: 'Collaborative task manager with real-time updates and team features',
-      ar: 'مدير مهام تعاوني مع تحديثات فورية وميزات فريق'
+      en: 'Full-stack fitness tracking platform with workout logging and progress analytics',
+      ar: 'منصة متكاملة لتتبع اللياقة البدنية مع تسجيل التمارين وتحليلات التقدم'
     },
     longDescription: {
-      en: 'A productivity app for teams with drag-and-drop task organization, real-time collaboration, notifications, and progress tracking. Built with React and Firebase.',
-      ar: 'تطبيق إنتاجية للفرق مع تنظيم المهام بالسحب والإفلات، تعاون فوري، إشعارات، وتتبع التقدم. مبني بـ React و Firebase.'
+      en: 'A full-stack fitness application where users log workouts rep by rep, track personal records, and visualize long-term progress. Features include custom workout plans, exercise libraries, and a real-time dashboard.',
+      ar: 'تطبيق لياقة بدنية متكامل يمكن المستخدمين من تسجيل التمارين تكراراً بتكرار، وتتبع الأرقام القياسية الشخصية، وتصور التقدم على المدى البعيد. يتضمن خطط تمرين مخصصة ومكتبات تمارين ولوحة تحكم في الوقت الفعلي.'
     },
     challenge: {
-      en: 'Keeping board state consistent when multiple users simultaneously create, move, and delete tasks — resolving conflicts without losing any work.',
-      ar: 'الحفاظ على اتساق حالة اللوح عندما يقوم عدة مستخدمين في وقت واحد بإنشاء المهام ونقلها وحذفها — وحل التعارضات دون فقدان أي عمل.'
+      en: 'Structuring a flexible data model that supports hundreds of exercise variations, nested sets/reps, and per-user progress history without degrading query performance as data grows.',
+      ar: 'هيكلة نموذج بيانات مرن يدعم مئات أنواع التمارين، والمجموعات والتكرارات المتداخلة، وتاريخ التقدم لكل مستخدم دون تدهور أداء الاستعلام مع نمو البيانات.'
     },
     solution: {
-      en: 'Firebase Realtime Database with transaction-based writes and conflict resolution rules; local state mirrors the remote with debounced writes to avoid thrashing the network.',
-      ar: 'قاعدة بيانات Firebase الفورية مع عمليات الكتابة القائمة على المعاملات وقواعد حل التعارض؛ الحالة المحلية تعكس البعيدة مع كتابات مؤجلة لتجنب إرهاق الشبكة.'
+      en: 'MongoDB document model for nested workout sessions, Express REST API with JWT auth, and a React frontend with context-based state management and Chart.js for progress visualization.',
+      ar: 'نموذج مستند MongoDB لجلسات التمرين المتداخلة، وـ Express REST API مع مصادقة JWT، وواجهة أمامية React مع إدارة الحالة القائمة على Context وـ Chart.js لتصور التقدم.'
     },
-    tags: ['React', 'Firebase', 'Material-UI', 'WebSocket'],
-    thumbnail: '/images/projects/tasks.jpg',
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/username/project',
+    tags: ['Node.js', 'Express', 'MongoDB', 'React'],
+    thumbnail: '/images/projects/repbyrep.jpg',
+    liveUrl: 'https://repbyrep.com',
     featured: true
   },
   {
     id: 3,
     title: {
-      en: 'Weather Dashboard',
-      ar: 'لوحة معلومات الطقس'
+      en: 'B&S — Bsinve',
+      ar: 'B&S — Bsinve'
     },
     description: {
-      en: 'Beautiful weather app with forecasts and location-based data',
-      ar: 'تطبيق طقس جميل مع توقعات وبيانات تعتمد على الموقع'
+      en: 'Corporate investment consultancy website with lead generation and service showcase',
+      ar: 'موقع شركة استشارات استثمارية مع توليد عملاء محتملين وعرض الخدمات'
     },
     longDescription: {
-      en: 'An elegant weather application that displays current conditions, hourly and weekly forecasts, with beautiful data visualizations and location search.',
-      ar: 'تطبيق طقس أنيق يعرض الظروف الحالية، التوقعات بالساعة والأسبوع، مع تصورات بيانات جميلة وبحث عن المواقع.'
+      en: 'Built the full web presence for Bsinve, an investment consultancy firm. The site presents services, team profiles, and case studies while funneling visitors into a lead capture and consultation booking flow.',
+      ar: 'بناء الحضور الكامل على الويب لشركة Bsinve للاستشارات الاستثمارية. يعرض الموقع الخدمات والملفات الشخصية للفريق ودراسات الحالة مع توجيه الزوار إلى نظام التقاط العملاء المحتملين وحجز الاستشارات.'
     },
     challenge: {
-      en: 'Rendering multi-layer Chart.js visualizations for 7-day forecasts responsively across device sizes without layout jank or reflow.',
-      ar: 'تصيير تصورات Chart.js متعددة الطبقات للتوقعات لمدة 7 أيام بشكل متجاوب عبر أحجام الأجهزة المختلفة دون اهتزاز في التخطيط.'
+      en: 'Creating a professional, trust-building design that converts visitors into consultation leads while maintaining fast load times on shared hosting infrastructure.',
+      ar: 'إنشاء تصميم احترافي يبني الثقة ويحول الزوار إلى عملاء محتملين للاستشارة مع الحفاظ على أوقات تحميل سريعة على بنية الاستضافة المشتركة.'
     },
     solution: {
-      en: 'Lazy-initialized Chart.js instances, SWR for API response caching with stale-while-revalidate, and a CSS Grid layout that recalculates chart dimensions using ResizeObserver.',
-      ar: 'مثيلات Chart.js ذات التهيئة الكسولة، وـ SWR لتخزين استجابات API مؤقتاً، وتخطيط CSS Grid الذي يعيد حساب أبعاد الرسم البياني باستخدام ResizeObserver.'
+      en: 'WordPress and Elementor for visual flexibility, custom PHP contact and booking forms with email automation, and performance optimization via caching and image compression plugins.',
+      ar: 'WordPress وElementor للمرونة البصرية، ونماذج اتصال وحجز PHP مخصصة مع أتمتة البريد الإلكتروني، وتحسين الأداء عبر إضافات التخزين المؤقت وضغط الصور.'
     },
-    tags: ['Vue.js', 'OpenWeather API', 'Chart.js', 'CSS3'],
-    thumbnail: '/images/projects/weather.jpg',
-    liveUrl: 'https://example.com',
-    featured: false
+    tags: ['WordPress', 'Elementor', 'PHP'],
+    thumbnail: '/images/projects/bsinve.jpg',
+    liveUrl: 'https://bsinve.com',
+    featured: true
   },
   {
     id: 4,
     title: {
-      en: 'Social Media Dashboard',
-      ar: 'لوحة معلومات وسائل التواصل'
+      en: 'Art Muse',
+      ar: 'آرت ميوز'
     },
     description: {
-      en: 'Analytics dashboard for tracking social media metrics',
-      ar: 'لوحة تحليلات لتتبع مقاييس وسائل التواصل الاجتماعي'
+      en: 'Creative portfolio and gallery website for artists — currently in development',
+      ar: 'موقع محفظة أعمال وغاليري إبداعي للفنانين — قيد التطوير حالياً'
     },
     longDescription: {
-      en: 'A comprehensive analytics tool that aggregates data from multiple social platforms, providing insights, trends, and performance metrics in real-time.',
-      ar: 'أداة تحليلات شاملة تجمع البيانات من منصات اجتماعية متعددة، وتوفر رؤى واتجاهات ومقاييس أداء في الوقت الفعلي.'
+      en: 'An immersive art portfolio and gallery platform being built with Framer. Focuses on cinematic scroll animations, full-screen image showcases, and a clean editorial aesthetic that lets the artwork speak for itself.',
+      ar: 'منصة محفظة أعمال فنية وغاليري غامرة تُبنى باستخدام Framer. تركز على رسوم متحركة سينمائية عند التمرير، وعروض صور بملء الشاشة، وجمالية تحريرية نظيفة تتيح للعمل الفني أن يتحدث عن نفسه.'
     },
     challenge: {
-      en: 'Aggregating and normalizing data from social APIs with different rate limits, authentication flows, and response shapes into a single coherent view.',
-      ar: 'تجميع وتطبيع البيانات من واجهات برمجة التطبيقات الاجتماعية ذات حدود المعدل المختلفة وتدفقات المصادقة وأشكال الاستجابة في عرض واحد متسق.'
+      en: 'Achieving fluid, cinematic transitions between gallery pieces without sacrificing accessibility or mobile performance.',
+      ar: 'تحقيق انتقالات سلسة وسينمائية بين القطع الفنية دون التضحية بإمكانية الوصول أو الأداء على الهاتف المحمول.'
     },
     solution: {
-      en: 'A Node.js adapter layer with per-platform normalizer functions, MongoDB for response caching, and a background queue to refresh stale data without blocking the UI.',
-      ar: 'طبقة محول Node.js مع وظائف التطبيع لكل منصة، وـ MongoDB لتخزين الاستجابات مؤقتاً، وطابور خلفي لتحديث البيانات القديمة دون تعطيل واجهة المستخدم.'
+      en: 'Framer\'s native animation engine with scroll-linked effects, lazy-loaded high-resolution images, and reduced-motion overrides for accessibility compliance.',
+      ar: 'محرك الرسوم المتحركة الأصلي لـ Framer مع تأثيرات مرتبطة بالتمرير، وصور عالية الدقة محملة بشكل كسول، وتجاوزات للحركة المخفضة للامتثال لمعايير إمكانية الوصول.'
     },
-    tags: ['Angular', 'D3.js', 'Node.js', 'MongoDB'],
-    thumbnail: '/images/projects/social.jpg',
-    githubUrl: 'https://github.com/username/project',
-    featured: false
+    tags: ['Framer', 'UI Design', 'Animation'],
+    thumbnail: '/images/projects/artmuse.jpg',
+    featured: true
   },
   {
     id: 5,
     title: {
-      en: 'Portfolio Builder',
-      ar: 'منشئ ملف أعمال'
+      en: 'Brilla',
+      ar: 'بريلا'
     },
     description: {
-      en: 'No-code tool for creating stunning developer portfolios',
-      ar: 'أداة بدون كود لإنشاء ملفات أعمال مطورين مذهلة'
+      en: 'Cross-platform mobile app — currently in development',
+      ar: 'تطبيق جوال متعدد المنصات — قيد التطوير حالياً'
     },
     longDescription: {
-      en: 'An intuitive portfolio builder that lets developers create and customize their portfolio websites without writing code. Features drag-and-drop interface, templates, and one-click deployment.',
-      ar: 'منشئ ملف أعمال بديهي يتيح للمطورين إنشاء وتخصيص مواقع ملفات أعمالهم بدون كتابة كود. يتضمن واجهة سحب وإفلات وقوالب ونشر بنقرة واحدة.'
+      en: 'Brilla is a cross-platform mobile application being developed with React Native and a Node.js backend. The app is currently in active development with core features being built and tested.',
+      ar: 'Brilla تطبيق جوال متعدد المنصات يتم تطويره باستخدام React Native وخادم خلفي Node.js. التطبيق في طور التطوير النشط مع بناء الميزات الأساسية واختبارها.'
     },
     challenge: {
-      en: 'Building a drag-and-drop canvas that remains responsive with dozens of components at arbitrary positions without degrading scroll and interaction performance.',
-      ar: 'بناء لوحة سحب وإفلات تظل سريعة الاستجابة مع عشرات المكونات في مواضع عشوائية دون تدهور أداء التمرير والتفاعل.'
+      en: 'Maintaining a single codebase that delivers a native-feeling experience on both iOS and Android while keeping the backend API flexible enough to evolve with the product.',
+      ar: 'الحفاظ على قاعدة كود واحدة تقدم تجربة تشبه التطبيق الأصلي على كل من iOS وAndroid مع الحفاظ على مرونة واجهة برمجة التطبيقات الخلفية بما يكفي للتطور مع المنتج.'
     },
     solution: {
-      en: 'React DnD with a virtualized canvas that only renders visible components, Prisma for user-owned template data, and Vercel for zero-config deployments from the builder UI.',
-      ar: 'React DnD مع لوحة افتراضية تعرض فقط المكونات المرئية، وـ Prisma لبيانات القوالب المملوكة للمستخدم، وـ Vercel للنشر الفوري من واجهة منشئ القوالب.'
+      en: 'React Native with Expo for cross-platform consistency, Node.js REST API with modular route structure, and a feature-flag system to gate in-progress functionality during development.',
+      ar: 'React Native مع Expo لاتساق المنصات المتعددة، وـ Node.js REST API ببنية مسار معيارية، ونظام علامات الميزات للتحكم في الوظائف قيد التطوير.'
     },
-    tags: ['React', 'Next.js', 'Prisma', 'PostgreSQL'],
-    thumbnail: '/images/projects/builder.jpg',
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/username/project',
+    tags: ['React Native', 'Node.js', 'Expo'],
+    thumbnail: '/images/projects/brilla.jpg',
     featured: true
+  },
+  {
+    id: 6,
+    title: {
+      en: 'AI RAG Chatbot',
+      ar: 'روبوت محادثة RAG بالذكاء الاصطناعي'
+    },
+    description: {
+      en: 'Retrieval-Augmented Generation chatbot that answers questions from a custom knowledge base',
+      ar: 'روبوت محادثة RAG يجيب على الأسئلة من قاعدة معرفة مخصصة'
+    },
+    longDescription: {
+      en: 'An AI-powered chatbot built on the RAG (Retrieval-Augmented Generation) pattern. Ingests documents into a vector store, retrieves the most relevant context at query time, and feeds it to an LLM to generate accurate, grounded answers — eliminating hallucinations on domain-specific topics.',
+      ar: 'روبوت محادثة مدعوم بالذكاء الاصطناعي مبني على نمط RAG (التوليد المعزز بالاسترداد). يستوعب المستندات في مخزن متجهات، ويسترد السياق الأكثر صلة عند الاستعلام، ويغذيه إلى نموذج لغوي كبير لتوليد إجابات دقيقة ومستندة — مما يقضي على الهلوسة في المواضيع الخاصة بالمجال.'
+    },
+    challenge: {
+      en: 'Ensuring the model answers strictly from the provided knowledge base without hallucinating, while keeping retrieval fast enough for a real-time chat experience.',
+      ar: 'ضمان إجابة النموذج بشكل صارم من قاعدة المعرفة المقدمة دون هلوسة، مع الحفاظ على سرعة الاسترداد كافية لتجربة محادثة في الوقت الفعلي.'
+    },
+    solution: {
+      en: 'Python pipeline with LangChain for orchestration, FAISS vector store for similarity search, and a prompt engineering layer that constrains the LLM to retrieved context only.',
+      ar: 'خط أنابيب Python مع LangChain للتنسيق، ومخزن متجهات FAISS للبحث بالتشابه، وطبقة هندسة الأوامر التي تقيد النموذج اللغوي الكبير بالسياق المسترد فقط.'
+    },
+    tags: ['Python', 'LangChain', 'FAISS', 'AI / ML'],
+    thumbnail: '/images/projects/ragchatbot.jpg',
+    featured: false
   }
 ];

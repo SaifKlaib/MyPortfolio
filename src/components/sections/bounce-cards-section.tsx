@@ -96,16 +96,17 @@ export function BounceCardsSection() {
           <BounceCards
             images={images}
             hrefs={hrefs}
-            containerWidth={600}
+            containerWidth={720}
             containerHeight={340}
             animationDelay={0.3}
-            animationStagger={0.08}
+            animationStagger={0.07}
             transformStyles={[
-              'rotate(10deg) translate(-220px)',
-              'rotate(5deg) translate(-110px)',
-              'rotate(-3deg)',
-              'rotate(-10deg) translate(110px)',
-              'rotate(2deg) translate(220px)',
+              'rotate(10deg) translate(-260px)',
+              'rotate(6deg) translate(-155px)',
+              'rotate(2deg) translate(-52px)',
+              'rotate(-4deg) translate(52px)',
+              'rotate(-9deg) translate(155px)',
+              'rotate(3deg) translate(260px)',
             ]}
           />
         </motion.div>
