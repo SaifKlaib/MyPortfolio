@@ -12,6 +12,14 @@ export interface Project {
     en: string;
     ar: string;
   };
+  challenge: {
+    en: string;
+    ar: string;
+  };
+  solution: {
+    en: string;
+    ar: string;
+  };
   tags: string[];
   thumbnail: string;
   liveUrl?: string;
