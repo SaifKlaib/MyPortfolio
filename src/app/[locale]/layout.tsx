@@ -1,22 +1,24 @@
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
+import { CustomCursor } from '@/components/ui/cursor';
 import type { Metadata } from 'next';
-import { Syne, Work_Sans } from "next/font/google";
+import { Josefin_Sans, Nunito } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
-// Distinctive typography choices
-const syne = Syne({
+// Josefin Sans — geometric art-deco display, elegant uppercase
+const josefinSans = Josefin_Sans({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "600", "700"],
 });
 
-const workSans = Work_Sans({
+// Nunito — warm rounded sans-serif, friendly and highly readable
+const nunito = Nunito({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
@@ -32,31 +34,23 @@ export async function generateMetadata({
 
   return {
     title: {
-      default: 'Developer Portfolio | Modern Bilingual Portfolio',
-      template: '%s | Developer Portfolio'
+      default: 'Developer Portfolio',
+      template: '%s | Portfolio'
     },
     description:
       locale === 'ar'
-        ? 'ملف أعمال مطور ويب متكامل - مشاريع حديثة وتقنيات متطورة'
-        : 'Full Stack Developer Portfolio - Modern projects and cutting-edge technologies',
+        ? 'مطور ويب متكامل — أبني تجارب رقمية دقيقة وأنيقة'
+        : 'Full Stack Developer — building precise, thoughtful digital experiences',
     keywords: ['portfolio', 'developer', 'web development', 'react', 'next.js', 'typescript'],
-    authors: [{ name: 'Your Name' }],
+    authors: [{ name: 'Saif Klaib' }],
     openGraph: {
       type: 'website',
       locale: locale === 'ar' ? 'ar_SA' : 'en_US',
       title: 'Developer Portfolio',
-      description: 'A modern bilingual developer portfolio',
+      description: 'Full Stack Developer Portfolio',
       siteName: 'Developer Portfolio'
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'Developer Portfolio',
-      description: 'A modern bilingual developer portfolio'
-    },
-    robots: {
-      index: true,
-      follow: true
-    }
+    robots: { index: true, follow: true }
   };
 }
 
@@ -77,20 +71,22 @@ export default async function LocaleLayout({
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <html lang={locale} dir={direction} suppressHydrationWarning className={`${syne.variable} ${workSans.variable}`}>
+    <html
+      lang={locale}
+      dir={direction}
+      suppressHydrationWarning
+      className={`${josefinSans.variable} ${nunito.variable}`}
+    >
       <body className="font-sans">
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="light"
+            enableSystem={false}
             disableTransitionOnChange
           >
-            <div className="flex min-h-screen flex-col relative">
-              {/* Background decoration */}
-              <div className="fixed inset-0 -z-10 bg-grid-pattern opacity-20" />
-              <div className="fixed inset-0 -z-10 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-
+            <CustomCursor />
+            <div className="flex min-h-screen flex-col">
               <Navbar />
               <main className="flex-1">{children}</main>
               <Footer />

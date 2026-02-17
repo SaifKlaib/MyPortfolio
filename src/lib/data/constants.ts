@@ -2,8 +2,8 @@ import { SocialLink } from '../types';
 
 export const SITE_CONFIG = {
   name: {
-    en: 'Your Name',
-    ar: 'اسمك'
+    en: 'Saif Klaib',
+    ar: 'سيف كليب'
   },
   tagline: {
     en: 'Full Stack Developer',
@@ -40,8 +40,8 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 export const NAV_LINKS = [
-  { href: '/', labelKey: 'nav.home' },
-  { href: '/projects', labelKey: 'nav.projects' },
-  { href: '/about', labelKey: 'nav.about' },
-  { href: '/contact', labelKey: 'nav.contact' }
+  { href: '/', labelKey: 'nav.home', section: null },
+  { href: '/#about', labelKey: 'nav.about', section: 'about' },
+  { href: '/#projects', labelKey: 'nav.projects', section: 'projects' },
+  { href: '/#contact', labelKey: 'nav.contact', section: 'contact' },
 ];
