@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight, User } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/data/constants';
 import { useRef } from 'react';
 
@@ -48,22 +48,22 @@ function PhotoWithBadge() {
         </svg>
       </motion.div>
 
-      {/* Photo placeholder */}
+      {/* Photo */}
       <motion.div
-        className="relative rounded-full overflow-hidden flex flex-col items-center justify-center gap-2.5"
+        className="relative rounded-full overflow-hidden"
         style={{
           width: 232,
           height: 232,
-          background: 'linear-gradient(145deg, var(--color-muted) 0%, var(--color-surface-alt) 100%)',
-          border: '2.5px dashed var(--color-border-strong)',
           boxShadow: '0 0 40px color-mix(in oklch, var(--color-primary), transparent 80%)',
         }}
         whileHover={{ scale: 1.025 }}
         transition={{ duration: 0.35 }}
       >
-        <User
-          style={{ width: 60, height: 60, color: 'var(--color-border-strong)', opacity: 0.5 }}
-          strokeWidth={1.25}
+        <img
+          src="/images/Untitled design (1).png"
+          alt="Saif Klaib"
+          className="w-full h-full object-cover object-top"
+          draggable={false}
         />
       </motion.div>
 
