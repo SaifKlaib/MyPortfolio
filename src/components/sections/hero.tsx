@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, User } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/data/constants';
 import { useRef } from 'react';
 
@@ -13,14 +13,14 @@ function PhotoWithBadge() {
     : 'Available for Work · Portfolio · Full Stack Dev · ';
 
   return (
-    <div className="relative flex items-center justify-center flex-shrink-0 select-none" style={{ width: 340, height: 400 }}>
-      {/* Glow blob behind cutout */}
+    <div className="relative flex items-center justify-center flex-shrink-0 select-none">
+      {/* Glow ring behind photo */}
       <div
         className="absolute rounded-full pointer-events-none"
         style={{
-          width: 320, height: 420,
-          background: 'radial-gradient(ellipse, color-mix(in oklch, var(--color-secondary), transparent 65%) 0%, transparent 70%)',
-          filter: 'blur(40px)',
+          width: 310, height: 310,
+          background: 'radial-gradient(circle, color-mix(in oklch, var(--color-secondary), transparent 70%) 0%, transparent 70%)',
+          filter: 'blur(30px)',
         }}
         aria-hidden="true"
       />
@@ -28,7 +28,7 @@ function PhotoWithBadge() {
       {/* Outer rotating badge ring */}
       <motion.div
         className="absolute"
-        style={{ width: 380, height: 380, top: '50%', left: '50%', translate: '-50% -50%' }}
+        style={{ width: 340, height: 340 }}
         animate={{ rotate: 360 }}
         transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
         aria-hidden="true"
@@ -48,19 +48,22 @@ function PhotoWithBadge() {
         </svg>
       </motion.div>
 
-      {/* Photo cutout */}
+      {/* Photo placeholder */}
       <motion.div
-        className="relative"
-        style={{ width: 260, height: 340 }}
+        className="relative rounded-full overflow-hidden flex flex-col items-center justify-center gap-2.5"
+        style={{
+          width: 232,
+          height: 232,
+          background: 'linear-gradient(145deg, var(--color-muted) 0%, var(--color-surface-alt) 100%)',
+          border: '2.5px dashed var(--color-border-strong)',
+          boxShadow: '0 0 40px color-mix(in oklch, var(--color-primary), transparent 80%)',
+        }}
         whileHover={{ scale: 1.025 }}
         transition={{ duration: 0.35 }}
       >
-        <img
-          src="/images/Untitled design (1).png"
-          alt="Saif Klaib"
-          className="w-full h-full object-contain object-bottom"
-          draggable={false}
-          style={{ filter: 'drop-shadow(0 8px 32px color-mix(in oklch, var(--color-primary), transparent 60%))' }}
+        <User
+          style={{ width: 60, height: 60, color: 'var(--color-border-strong)', opacity: 0.5 }}
+          strokeWidth={1.25}
         />
       </motion.div>
 
@@ -69,7 +72,7 @@ function PhotoWithBadge() {
         className="absolute rounded-full"
         style={{
           width: 14, height: 14,
-          top: '20%', right: 4,
+          top: '50%', right: 0, marginTop: -7,
           background: 'var(--color-secondary)',
           boxShadow: '0 0 12px var(--color-secondary)',
         }}
