@@ -60,7 +60,7 @@ function PhotoWithBadge() {
         transition={{ duration: 0.35 }}
       >
         <img
-          src="/images/Untitled design (1).png"
+          src="/images/Myimage.jpeg"
           alt="Saif Klaib"
           className="w-full h-full object-cover object-top"
           draggable={false}
