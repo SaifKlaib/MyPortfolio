@@ -124,7 +124,6 @@ export function Navbar() {
                       : 'white',
                     background: isActive ? 'var(--color-primary)' : 'transparent',
                     fontWeight: isActive ? 600 : 400,
-                    mixBlendMode: isScrolled ? 'normal' : 'difference',
                   }}
                 >
                   {isActive && (
