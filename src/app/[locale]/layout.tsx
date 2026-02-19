@@ -2,7 +2,7 @@ import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { CustomCursor } from '@/components/ui/cursor';
 import type { Metadata } from 'next';
-import { Josefin_Sans, Nunito } from "next/font/google";
+import { Josefin_Sans, Nunito, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
@@ -23,6 +23,14 @@ const nunito = Nunito({
   variable: "--font-body",
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
+});
+
+// JetBrains Mono — monospaced font for tag pills and code elements
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500"],
 });
 
 export async function generateMetadata({
@@ -75,9 +83,9 @@ export default async function LocaleLayout({
       lang={locale}
       dir={direction}
       suppressHydrationWarning
-      className={`${josefinSans.variable} ${nunito.variable}`}
+      className={`${josefinSans.variable} ${nunito.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="font-sans">
+      <body className="font-sans" suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
