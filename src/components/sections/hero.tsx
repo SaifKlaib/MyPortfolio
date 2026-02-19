@@ -175,9 +175,6 @@ export function Hero({ introComplete = true, skipTyping = false }: HeroProps) {
               </span>
             </motion.div>
 
-            {/* Greeting eyebrow */}
-            <motion.p {...fadeUp(0.1)} className="eyebrow">{t('greeting')}</motion.p>
-
             {/* Name */}
             <motion.div {...fadeUp(0.15)}>
               <h1

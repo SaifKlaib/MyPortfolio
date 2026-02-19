@@ -9,32 +9,27 @@ export const SITE_CONFIG = {
     en: 'Full Stack Developer',
     ar: 'مطور ويب متكامل'
   },
-  email: 'your.email@example.com',
+  email: 'seefemad10@gmail.com',
   location: {
-    en: 'Your City, Country',
-    ar: 'مدينتك، بلدك'
+    en: 'Riyadh, Saudi Arabia',
+    ar: 'الرياض، المملكة العربية السعودية'
   }
 };
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'GitHub',
-    url: 'https://github.com/yourusername',
+    url: 'https://github.com/SaifKlaib',
     icon: 'github'
   },
   {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/yourusername',
+    url: 'https://www.linkedin.com/in/saif-klaib-0b4527248',
     icon: 'linkedin'
   },
   {
-    name: 'Twitter',
-    url: 'https://twitter.com/yourusername',
-    icon: 'twitter'
-  },
-  {
     name: 'Email',
-    url: 'mailto:your.email@example.com',
+    url: 'mailto:seefemad10@gmail.com',
     icon: 'email'
   }
 ];

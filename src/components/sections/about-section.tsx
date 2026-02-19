@@ -124,8 +124,7 @@ export function AboutSection() {
               boxShadow: 'inset 0 0 30px color-mix(in oklch, var(--color-accent), transparent 88%)',
             }}
           >
-            <p className="eyebrow mb-2">{t('philosophyTitle')}</p>
-            <p className="text-sm font-sans text-foreground leading-relaxed italic font-light">
+            <p className="text-xl md:text-2xl font-display font-bold text-foreground leading-snug italic">
               {t('philosophy')}
             </p>
           </div>

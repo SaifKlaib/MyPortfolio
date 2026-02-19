@@ -7,8 +7,8 @@
   },
   "hero": {
     "greeting": "Hello, I'm",
-    "title": "Full Stack Developer",
-    "subtitle": "Turning complex challenges into precise, elegant software — from architecture to the final pixel.",
+    "title": "Full Stack Developer & AI Engineer",
+    "subtitle": "Jordanian developer based in Riyadh — blending AI & Data Science expertise with full-stack engineering to build precise, intelligent digital products.",
     "cta": "View Work",
     "available": "Available for new projects"
   },
@@ -29,10 +29,10 @@
   "about": {
     "title": "About",
     "skillsTitle": "Skills & Technologies",
-    "intro1": "I'm {name}, a full-stack developer who builds thoughtful digital products. I work across the entire stack — designing systems, writing clean code, and shipping applications that are both functional and refined.",
-    "intro2": "Beyond development, I explore emerging technologies, contribute to open-source projects, and continuously refine my approach to building software.",
-    "philosophyTitle": "Philosophy",
-    "philosophy": "Good software is invisible — it works so seamlessly that users never think about the machinery underneath. That's the standard I hold my work to."
+    "intro1": "I'm {name}, a Jordanian developer based in Riyadh. I studied Artificial Intelligence and Data Science, and have built expertise across the full stack — from React and React Native on the front end to Node.js, Express, and Python on the back end, with MongoDB and PostgreSQL powering the data layer.",
+    "intro2": "I've worked extensively with AI technologies including RAG architectures and LangChain, and hold certifications in full-stack development. Whether it's a web app, a mobile experience, or an AI-powered system — I bring both the technical depth and the attention to craft.",
+    "philosophyTitle": "Together",
+    "philosophy": "We can build great things together"
   },
   "contact": {
     "title": "Contact",
