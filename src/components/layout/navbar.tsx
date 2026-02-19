@@ -94,7 +94,10 @@ export function Navbar() {
             </span>
             <span
               className="hidden sm:block font-display font-bold text-xs tracking-[0.14em] uppercase transition-colors duration-200"
-              style={{ color: 'var(--color-foreground)' }}
+              style={{
+                color: isScrolled ? 'var(--color-foreground)' : 'white',
+                mixBlendMode: isScrolled ? 'normal' : 'difference',
+              }}
             >
               Saif Klaib
             </span>
@@ -102,7 +105,10 @@ export function Navbar() {
 
           {/* Desktop nav — pill indicator */}
           <div className="hidden md:flex items-center gap-1 rounded-full border border-border px-1.5 py-1.5"
-            style={{ background: 'color-mix(in oklch, var(--color-muted), transparent 40%)' }}
+            style={{
+              background: 'color-mix(in oklch, var(--color-muted), transparent 40%)',
+              mixBlendMode: isScrolled ? 'normal' : 'difference',
+            }}
           >
             {NAV_LINKS.map((link) => {
               const isActive = isHome && activeSection === (link.section ?? 'home');
@@ -113,9 +119,12 @@ export function Navbar() {
                   onClick={(e) => handleNavClick(e, link.section)}
                   className="relative px-4 py-1.5 rounded-full font-sans text-xs tracking-[0.12em] uppercase transition-colors duration-200"
                   style={{
-                    color: isActive ? 'var(--color-primary-foreground)' : 'var(--color-muted-foreground)',
+                    color: isScrolled
+                      ? (isActive ? 'var(--color-primary-foreground)' : 'var(--color-muted-foreground)')
+                      : 'white',
                     background: isActive ? 'var(--color-primary)' : 'transparent',
                     fontWeight: isActive ? 600 : 400,
+                    mixBlendMode: isScrolled ? 'normal' : 'difference',
                   }}
                 >
                   {isActive && (
