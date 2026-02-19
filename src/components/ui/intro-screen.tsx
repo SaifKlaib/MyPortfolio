@@ -55,46 +55,51 @@ function IntroCursor({ charCount }: { charCount: number }) {
 export function IntroScreen({ name, onComplete }: IntroScreenProps) {
   const [visible, setVisible] = useState(true);
   const chars = name.split('');
+  const EXIT_DURATION = 0.75;
 
   useEffect(() => {
-    // Last char animates in at: 0.5 + (n-1)*0.06 + 0.4s duration
+    // Last char lands at: 0.5 + (n-1)*0.06 + 0.4
     const typingEnd = 0.5 + (chars.length - 1) * 0.06 + 0.4;
-    // Cursor animation ends at: typingEnd + 0.15 delay + 1.6 duration
+    // Cursor fades at: typingEnd + 0.15 + 1.6
     const cursorEnd = typingEnd + 0.15 + 1.6;
-    // Hold briefly after cursor fades
-    const holdEnd = cursorEnd + 0.25;
+    // Brief hold after cursor
+    const holdEnd = cursorEnd + 0.3;
 
-    const timer = setTimeout(() => setVisible(false), holdEnd * 1000);
-    return () => clearTimeout(timer);
-  }, [chars.length]);
+    // Trigger exit animation
+    const hideTimer = setTimeout(() => setVisible(false), holdEnd * 1000);
+    // Call onComplete after exit animation finishes
+    const doneTimer = setTimeout(onComplete, (holdEnd + EXIT_DURATION) * 1000);
+
+    return () => {
+      clearTimeout(hideTimer);
+      clearTimeout(doneTimer);
+    };
+  }, [chars.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <AnimatePresence onExitComplete={onComplete}>
+    <AnimatePresence>
       {visible && (
         <motion.div
           key="intro-overlay"
           className="fixed inset-0 z-[200] flex items-center justify-center"
           style={{ background: 'var(--color-background)' }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: EXIT_DURATION, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* layoutId element — Framer Motion will FLIP-animate this to the hero h1 on exit */}
-          <motion.div layoutId="hero-name" className="select-none pointer-events-none">
-            <span
-              className="font-display font-bold uppercase inline-flex flex-wrap items-baseline"
-              style={{
-                fontSize: 'clamp(3.2rem, 11vw, 9.5rem)',
-                color: 'var(--color-primary)',
-                letterSpacing: '-0.02em',
-                lineHeight: 0.88,
-              }}
-            >
-              {chars.map((char, i) => (
-                <IntroChar key={i} char={char} index={i} />
-              ))}
-              <IntroCursor charCount={chars.length} />
-            </span>
-          </motion.div>
+          <span
+            className="font-display font-bold uppercase inline-flex flex-wrap items-baseline select-none pointer-events-none"
+            style={{
+              fontSize: 'clamp(3.2rem, 11vw, 9.5rem)',
+              color: 'var(--color-primary)',
+              letterSpacing: '-0.02em',
+              lineHeight: 0.88,
+            }}
+          >
+            {chars.map((char, i) => (
+              <IntroChar key={i} char={char} index={i} />
+            ))}
+            <IntroCursor charCount={chars.length} />
+          </span>
         </motion.div>
       )}
     </AnimatePresence>

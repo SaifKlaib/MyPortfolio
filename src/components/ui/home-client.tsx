@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { MotionConfig } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import { Hero } from '@/components/sections/hero';
 import { MarqueeStrip } from '@/components/sections/marquee-strip';
@@ -17,23 +16,8 @@ export function HomeClient() {
 
   // showIntro: the overlay is mounted
   // introComplete: hero content can appear
-  // fromIntro: this session started with the intro (hero name comes via layoutId)
-  const [showIntro, setShowIntro] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
   const [introComplete, setIntroComplete] = useState(false);
-  const [fromIntro, setFromIntro] = useState(false);
-
-  useEffect(() => {
-    const seen = sessionStorage.getItem('portfolio-intro-shown');
-    if (!seen) {
-      sessionStorage.setItem('portfolio-intro-shown', '1');
-      setShowIntro(true);
-      setFromIntro(true);
-      // introComplete stays false — hero content hidden until intro finishes
-    } else {
-      // Returning visitor: no intro, show hero immediately
-      setIntroComplete(true);
-    }
-  }, []);
 
   // Prevent scroll during intro
   useEffect(() => {
@@ -51,25 +35,18 @@ export function HomeClient() {
   };
 
   return (
-    <MotionConfig
-      transition={{
-        layout: {
-          duration: 0.9,
-          ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-        },
-      }}
-    >
+    <>
       {showIntro && (
         <IntroScreen name={name} onComplete={handleIntroComplete} />
       )}
       <Hero
         introComplete={introComplete}
-        skipTyping={fromIntro}
+        skipTyping={true}
       />
       <MarqueeStrip />
       <AboutSection />
       <BounceCardsSection />
       <ContactSection />
-    </MotionConfig>
+    </>
   );
 }

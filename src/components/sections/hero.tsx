@@ -182,8 +182,8 @@ export function Hero({ introComplete = true, skipTyping = false }: HeroProps) {
             {/* Greeting eyebrow */}
             <motion.p {...fadeUp(0.1)} className="eyebrow">{t('greeting')}</motion.p>
 
-            {/* Name — layoutId target: receives the FLIP morph from IntroScreen */}
-            <motion.div layoutId="hero-name">
+            {/* Name */}
+            <motion.div {...fadeUp(0.15)}>
               <h1
                 className="font-display font-bold leading-[0.88] tracking-tight uppercase"
                 style={{
