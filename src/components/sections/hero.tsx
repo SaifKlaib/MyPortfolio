@@ -1,10 +1,55 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/data/constants';
-import { useRef } from 'react';
+
+function TypingName({ name }: { name: string }) {
+  const chars = name.split('');
+  return (
+    <span className="inline-flex flex-wrap">
+      {chars.map((char, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.35,
+            delay: 0.3 + i * 0.055,
+            ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+          }}
+          style={{ display: char === ' ' ? 'inline-block' : undefined, width: char === ' ' ? '0.35em' : undefined }}
+        >
+          {char}
+        </motion.span>
+      ))}
+      <TypingCursor charCount={chars.length} />
+    </span>
+  );
+}
+
+function TypingCursor({ charCount }: { charCount: number }) {
+  return (
+    <motion.span
+      initial={{ opacity: 0 }}
+      animate={{ opacity: [0, 1, 1, 1, 0] }}
+      transition={{
+        delay: 0.3 + charCount * 0.055,
+        duration: 1.8,
+        times: [0, 0.05, 0.5, 0.9, 1],
+        ease: 'linear',
+      }}
+      className="inline-block w-[3px] mx-[2px] rounded-full align-middle"
+      style={{
+        height: '0.75em',
+        background: 'var(--color-primary)',
+        marginBottom: '0.1em',
+      }}
+      aria-hidden="true"
+    />
+  );
+}
 
 function PhotoWithBadge() {
   const locale = useLocale();
@@ -89,17 +134,6 @@ export function Hero() {
   const locale = useLocale();
   const name = SITE_CONFIG.name[locale as 'en' | 'ar'];
 
-  const containerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start'],
-  });
-
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '-12%']);
-  const blob1Y   = useTransform(scrollYProgress, [0, 1], ['0%', '-30%']);
-  const blob2Y   = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
-  const fadeOut  = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
-
   const stagger = {
     hidden: {},
     show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
@@ -115,49 +149,19 @@ export function Hero() {
 
   return (
     <section
-      ref={containerRef}
       id="home"
       className="relative min-h-screen overflow-hidden flex flex-col justify-center"
-      style={{ background: 'var(--color-background)' }}
+      style={{
+        background: `
+          radial-gradient(ellipse 55% 55% at 90% 5%,  color-mix(in oklch, var(--color-primary),   transparent 82%) 0%, transparent 100%),
+          radial-gradient(ellipse 45% 45% at 5%  95%, color-mix(in oklch, var(--color-secondary), transparent 84%) 0%, transparent 100%),
+          radial-gradient(ellipse 30% 30% at 50% 45%, color-mix(in oklch, var(--color-accent),    transparent 86%) 0%, transparent 100%),
+          var(--color-background)
+        `,
+      }}
     >
-      {/* Teal blobs — three shades for ocean depth */}
-      <motion.div
-        className="blob-1 absolute rounded-full pointer-events-none"
-        aria-hidden="true"
-        style={{
-          y: blob1Y,
-          width: 700, height: 700,
-          insetInlineEnd: -250, top: -250,
-          background: 'var(--color-primary)',
-          filter: 'blur(150px)',
-          opacity: 0.18,
-        }}
-      />
-      <motion.div
-        className="blob-2 absolute rounded-full pointer-events-none"
-        aria-hidden="true"
-        style={{
-          y: blob2Y,
-          width: 580, height: 580,
-          insetInlineStart: -200, bottom: -200,
-          background: 'var(--color-secondary)',
-          filter: 'blur(130px)',
-          opacity: 0.16,
-        }}
-      />
-      <div
-        className="blob-3 absolute rounded-full pointer-events-none"
-        aria-hidden="true"
-        style={{
-          width: 320, height: 320, top: '38%', left: '38%',
-          background: 'var(--color-accent)',
-          filter: 'blur(100px)',
-          opacity: 0.14,
-        }}
-      />
-
       {/* Subtle teal dot grid */}
-      <div className="bg-dot-grid absolute inset-0 opacity-30 pointer-events-none" aria-hidden="true" />
+      <div className="bg-dot-grid absolute inset-0 opacity-25 pointer-events-none" aria-hidden="true" />
 
       {/* Diagonal accent line */}
       <div
@@ -176,7 +180,6 @@ export function Hero() {
 
       {/* Content */}
       <motion.div
-        style={{ y: contentY, opacity: fadeOut }}
         className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10 py-20"
       >
         <motion.div
@@ -186,7 +189,7 @@ export function Hero() {
           className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-24 items-center"
         >
           {/* Left: text */}
-          <div className="space-y-6">
+          <div className="space-y-8">
 
             {/* Available status */}
             <motion.div variants={item} className="flex items-center gap-3">
@@ -219,7 +222,7 @@ export function Hero() {
                   letterSpacing: '-0.02em',
                 }}
               >
-                {name}
+                <TypingName name={name} />
               </h1>
             </motion.div>
 
