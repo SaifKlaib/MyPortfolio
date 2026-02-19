@@ -3,9 +3,8 @@
 import { LogoLoop } from '@/components/ui/logo-loop';
 
 const techStack = [
-  'React', 'TypeScript', 'Next.js', 'Node.js',
-  'GraphQL', 'PostgreSQL', 'Docker', 'Tailwind CSS',
-  'Vue.js', 'MongoDB', 'AWS', 'Figma',
+  'Node.js', 'MongoDB', 'PostgreSQL', 'TypeScript',
+  'React', 'Next.js', 'Automation', 'AI / ML',
 ];
 
 const logos = techStack.map((tech) => ({

@@ -13,29 +13,27 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { locale, id } = await params;
+  const { id } = await params;
   const project = projects.find((p) => p.id === Number(id));
   if (!project) return {};
-  const lang = locale as 'en' | 'ar';
   return {
-    title: project.title[lang],
-    description: project.description[lang],
+    title: project.title.en,
+    description: project.description.en,
   };
 }
 
 export default async function ProjectDetailPage({ params }: Props) {
-  const { locale, id } = await params;
+  const { id } = await params;
   const t = await getTranslations('projects');
 
   const project = projects.find((p) => p.id === Number(id));
   if (!project) notFound();
 
-  const lang = locale as 'en' | 'ar';
-  const title = project.title[lang];
-  const description = project.description[lang];
-  const longDescription = project.longDescription[lang];
-  const challenge = project.challenge[lang];
-  const solution = project.solution[lang];
+  const title = project.title.en;
+  const description = project.description.en;
+  const longDescription = project.longDescription.en;
+  const challenge = project.challenge.en;
+  const solution = project.solution.en;
 
   // Accent cycles: primary / secondary / accent
   const accentColors = [

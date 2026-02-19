@@ -24,7 +24,8 @@ export const projects: Project[] = [
       ar: 'بُني على WordPress مع Elementor للتجميع البصري السريع، وموديولات PHP مخصصة لمنطق التسجيل، وـ ACF لإدارة المحتوى متعدد اللغات بشكل منظم.'
     },
     tags: ['WordPress', 'Elementor', 'PHP', 'ACF'],
-    thumbnail: '/images/projects/gis.jpg',
+    thumbnail: '/images/GIS.webp',
+    liveUrl: 'https://gis2026.com/?bypass_code=YxTARnCAdWVCzXfL',
     featured: true
   },
   {
@@ -50,7 +51,7 @@ export const projects: Project[] = [
       ar: 'نموذج مستند MongoDB لجلسات التمرين المتداخلة، وـ Express REST API مع مصادقة JWT، وواجهة أمامية React مع إدارة الحالة القائمة على Context وـ Chart.js لتصور التقدم.'
     },
     tags: ['Node.js', 'Express', 'MongoDB', 'React'],
-    thumbnail: '/images/projects/repbyrep.jpg',
+    thumbnail: '/images/Rep.webp',
     liveUrl: 'https://repbyrep.com',
     featured: true
   },
@@ -77,7 +78,7 @@ export const projects: Project[] = [
       ar: 'WordPress وElementor للمرونة البصرية، ونماذج اتصال وحجز PHP مخصصة مع أتمتة البريد الإلكتروني، وتحسين الأداء عبر إضافات التخزين المؤقت وضغط الصور.'
     },
     tags: ['WordPress', 'Elementor', 'PHP'],
-    thumbnail: '/images/projects/bsinve.jpg',
+    thumbnail: '/images/bsinve.webp',
     liveUrl: 'https://bsinve.com',
     featured: true
   },
@@ -104,7 +105,7 @@ export const projects: Project[] = [
       ar: 'محرك الرسوم المتحركة الأصلي لـ Framer مع تأثيرات مرتبطة بالتمرير، وصور عالية الدقة محملة بشكل كسول، وتجاوزات للحركة المخفضة للامتثال لمعايير إمكانية الوصول.'
     },
     tags: ['Framer', 'UI Design', 'Animation'],
-    thumbnail: '/images/projects/artmuse.jpg',
+
     featured: true
   },
   {
@@ -130,7 +131,7 @@ export const projects: Project[] = [
       ar: 'React Native مع Expo لاتساق المنصات المتعددة، وـ Node.js REST API ببنية مسار معيارية، ونظام علامات الميزات للتحكم في الوظائف قيد التطوير.'
     },
     tags: ['React Native', 'Node.js', 'Expo'],
-    thumbnail: '/images/projects/brilla.jpg',
+
     featured: true
   },
   {
@@ -156,7 +157,7 @@ export const projects: Project[] = [
       ar: 'خط أنابيب Python مع LangChain للتنسيق، ومخزن متجهات FAISS للبحث بالتشابه، وطبقة هندسة الأوامر التي تقيد النموذج اللغوي الكبير بالسياق المسترد فقط.'
     },
     tags: ['Python', 'LangChain', 'FAISS', 'AI / ML'],
-    thumbnail: '/images/projects/ragchatbot.jpg',
-    featured: false
+
+    featured: true
   }
 ];

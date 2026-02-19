@@ -14,8 +14,8 @@ function IntroChar({ char, index }: { char: string; index: number }) {
       initial={{ opacity: 0, y: 32 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        duration: 0.4,
-        delay: 0.5 + index * 0.06,
+        duration: 0.3,
+        delay: 0.2 + index * 0.04,
         ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
       }}
       style={{
@@ -34,8 +34,8 @@ function IntroCursor({ charCount }: { charCount: number }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: [0, 1, 1, 1, 0] }}
       transition={{
-        delay: 0.5 + charCount * 0.06 + 0.15,
-        duration: 1.6,
+        delay: 0.2 + charCount * 0.04 + 0.1,
+        duration: 1.0,
         times: [0, 0.05, 0.5, 0.9, 1],
         ease: 'linear',
       }}
@@ -55,15 +55,15 @@ function IntroCursor({ charCount }: { charCount: number }) {
 export function IntroScreen({ name, onComplete }: IntroScreenProps) {
   const [visible, setVisible] = useState(true);
   const chars = name.split('');
-  const EXIT_DURATION = 0.75;
+  const EXIT_DURATION = 0.5;
 
   useEffect(() => {
-    // Last char lands at: 0.5 + (n-1)*0.06 + 0.4
-    const typingEnd = 0.5 + (chars.length - 1) * 0.06 + 0.4;
-    // Cursor fades at: typingEnd + 0.15 + 1.6
-    const cursorEnd = typingEnd + 0.15 + 1.6;
+    // Last char lands at: 0.2 + (n-1)*0.04 + 0.3
+    const typingEnd = 0.2 + (chars.length - 1) * 0.04 + 0.3;
+    // Cursor fades at: typingEnd + 0.1 + 1.0
+    const cursorEnd = typingEnd + 0.1 + 1.0;
     // Brief hold after cursor
-    const holdEnd = cursorEnd + 0.3;
+    const holdEnd = cursorEnd + 0.2;
 
     // Trigger exit animation
     const hideTimer = setTimeout(() => setVisible(false), holdEnd * 1000);

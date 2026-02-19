@@ -11,6 +11,10 @@ const config: Config = {
     extend: {
       colors: {
         background: "var(--color-background)",
+        surface: {
+          DEFAULT: "var(--color-surface)",
+          alt: "var(--color-surface-alt)",
+        },
         foreground: "var(--color-foreground)",
         card: {
           DEFAULT: "var(--color-card)",
@@ -32,7 +36,10 @@ const config: Config = {
           DEFAULT: "var(--color-muted)",
           foreground: "var(--color-muted-foreground)",
         },
-        border: "var(--color-border)",
+        border: {
+          DEFAULT: "var(--color-border)",
+          strong: "var(--color-border-strong)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -46,9 +53,6 @@ const config: Config = {
       animation: {
         "fade-in": "fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-up": "slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
-        "bounce-subtle": "bounce-subtle 2s ease-in-out infinite",
-        "float": "float 6s ease-in-out infinite",
-        "glow": "glow 2s ease-in-out infinite",
       },
       keyframes: {
         "fade-in": {
@@ -58,18 +62,6 @@ const config: Config = {
         "slide-up": {
           "0%": { transform: "translateY(30px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
-        },
-        "bounce-subtle": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        "float": {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-20px)" },
-        },
-        "glow": {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.5" },
         },
       },
     },

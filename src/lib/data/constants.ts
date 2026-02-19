@@ -40,7 +40,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 export const NAV_LINKS = [
-  { href: '/', labelKey: 'nav.home', section: null },
+  { href: '/', labelKey: 'nav.home', section: 'home' },
   { href: '/#about', labelKey: 'nav.about', section: 'about' },
   { href: '/#projects', labelKey: 'nav.projects', section: 'projects' },
   { href: '/#contact', labelKey: 'nav.contact', section: 'contact' },

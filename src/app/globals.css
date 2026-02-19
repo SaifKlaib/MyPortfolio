@@ -8,38 +8,38 @@ html {
 @layer theme {
   :root {
     /* ──────────────────────────────────────────────
-       Deep Ocean — #EBF4F6 / #7AB2B2 / #088395 / #09637E
+       Forest Night — #040D12 / #183D3D / #5C8374 / #93B1A6
        ────────────────────────────────────────────── */
 
     /* Surfaces */
-    --color-background:   oklch(96.2% 0.013 206);  /* #EBF4F6 — seafoam mist */
-    --color-surface:      oklch(99.2% 0.004 204);  /* near-white, subtle teal tint */
-    --color-surface-alt:  oklch(93.5% 0.020 204);  /* slightly deeper seafoam */
+    --color-background:   oklch(7.5% 0.012 220);   /* #040D12 — near black navy */
+    --color-surface:      oklch(11%  0.018 215);   /* slightly lifted dark */
+    --color-surface-alt:  oklch(15%  0.025 210);   /* card hover / alternate */
 
     /* Text */
-    --color-foreground:       oklch(17% 0.045 215);  /* deep teal-navy heading ink */
-    --color-card:             oklch(99.2% 0.004 204);
-    --color-card-foreground:  oklch(17% 0.045 215);
+    --color-foreground:       oklch(72% 0.038 175);  /* #93B1A6 — light sage */
+    --color-card:             oklch(11% 0.018 215);
+    --color-card-foreground:  oklch(72% 0.038 175);
 
-    /* Primary — #09637E deep ocean */
-    --color-primary:            oklch(41.5% 0.078 212);
-    --color-primary-foreground: oklch(99% 0 0);
+    /* Primary — #5C8374 sage green */
+    --color-primary:            oklch(53% 0.053 168);  /* #5C8374 */
+    --color-primary-foreground: oklch(7.5% 0.012 220); /* dark text on sage */
 
-    /* Secondary — #088395 medium teal */
-    --color-secondary:            oklch(51.8% 0.085 208);
-    --color-secondary-foreground: oklch(99% 0 0);
+    /* Secondary — #93B1A6 light sage */
+    --color-secondary:            oklch(72% 0.038 175);  /* #93B1A6 */
+    --color-secondary-foreground: oklch(7.5% 0.012 220);
 
-    /* Accent — #7AB2B2 seafoam */
-    --color-accent:            oklch(70.5% 0.058 200);
-    --color-accent-foreground: oklch(17% 0.045 215);
+    /* Accent — #183D3D dark teal */
+    --color-accent:            oklch(24% 0.058 195);  /* #183D3D */
+    --color-accent-foreground: oklch(72% 0.038 175);
 
     /* Muted */
-    --color-muted:            oklch(92.5% 0.018 204);
-    --color-muted-foreground: oklch(50% 0.04 210);
+    --color-muted:            oklch(16% 0.025 210);
+    --color-muted-foreground: oklch(53% 0.053 168);  /* #5C8374 sage */
 
     /* Borders */
-    --color-border:        oklch(87% 0.022 204);
-    --color-border-strong: oklch(74% 0.040 206);
+    --color-border:        oklch(22% 0.045 200);   /* subtle dark teal */
+    --color-border-strong: oklch(32% 0.055 195);   /* #183D3D lifted */
 
     --radius: 1rem;
   }
@@ -61,9 +61,6 @@ body {
   body { cursor: auto; }
 }
 
-/* === RTL Support === */
-[dir="rtl"] { direction: rtl; }
-[dir="ltr"] { direction: ltr; }
 
 /* === Blob animations === */
 @keyframes blob-drift-1 {
@@ -94,11 +91,6 @@ body {
   to   { transform: translateX(-50%); }
 }
 
-@keyframes marquee-rtl {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
-}
-
 .marquee-track { overflow: hidden; white-space: nowrap; }
 
 .marquee-inner {
@@ -106,8 +98,6 @@ body {
   animation: marquee-ltr 30s linear infinite;
   will-change: transform;
 }
-
-[dir="rtl"] .marquee-inner { animation-name: marquee-rtl; }
 
 /* === Scroll-triggered stagger === */
 @keyframes rise-in {

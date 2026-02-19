@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/routing';
@@ -9,10 +9,10 @@ import { projects } from '@/lib/data/projects';
 
 export function BounceCardsSection() {
   const t = useTranslations('projects');
-  const locale = useLocale();
 
-  const images = projects.map((p) => p.thumbnail);
-  const hrefs = projects.map((p) => `/${locale}/projects/${p.id}`);
+  const featured = projects.filter((p) => p.featured && p.thumbnail);
+  const images = featured.map((p) => p.thumbnail as string);
+  const hrefs = featured.map((p) => `/en/projects/${p.id}`);
 
   return (
     <section
@@ -53,7 +53,7 @@ export function BounceCardsSection() {
             className="mb-2 font-sans text-[0.68rem] tracking-[0.28em] uppercase font-bold"
             style={{ color: 'var(--color-accent)' }}
           >
-            {locale === 'ar' ? '03 / المشاريع' : '03 / Projects'}
+            03 / Projects
           </p>
           <h2
             className="font-display font-bold leading-[0.9] tracking-tight uppercase"
@@ -100,14 +100,11 @@ export function BounceCardsSection() {
             containerHeight={340}
             animationDelay={0.3}
             animationStagger={0.07}
-            transformStyles={[
-              'rotate(10deg) translate(-260px)',
-              'rotate(6deg) translate(-155px)',
-              'rotate(2deg) translate(-52px)',
-              'rotate(-4deg) translate(52px)',
-              'rotate(-9deg) translate(155px)',
-              'rotate(3deg) translate(260px)',
-            ]}
+            transformStyles={featured.map((_, i) => {
+              const offsets = [-130, 0, 130, 260];
+              const rotations = [8, 0, -8, -14];
+              return `rotate(${rotations[i] ?? 0}deg) translate(${offsets[i] ?? 0}px)`;
+            })}
           />
         </motion.div>
 
@@ -131,7 +128,7 @@ export function BounceCardsSection() {
               borderColor: 'color-mix(in oklch, var(--color-primary-foreground), transparent 60%)',
             }}
           >
-            {locale === 'ar' ? 'عرض كل المشاريع' : 'View All Projects'}
+            View All Projects
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </motion.div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/data/constants';
@@ -52,10 +52,7 @@ function TypingCursor({ charCount }: { charCount: number }) {
 // ─── Photo badge ──────────────────────────────────────────────────────────────
 
 function PhotoWithBadge() {
-  const locale = useLocale();
-  const text = locale === 'ar'
-    ? 'متاح للعمل · محفظة أعمال · مطور ويب · '
-    : 'Available for Work · Portfolio · Full Stack Dev · ';
+  const text = 'Available for Work · Portfolio · Full Stack Dev · ';
 
   return (
     <div className="relative flex items-center justify-center flex-shrink-0 select-none">
@@ -114,8 +111,7 @@ interface HeroProps {
 
 export function Hero({ introComplete = true, skipTyping = false }: HeroProps) {
   const t = useTranslations('hero');
-  const locale = useLocale();
-  const name = SITE_CONFIG.name[locale as 'en' | 'ar'];
+  const name = SITE_CONFIG.name.en;
 
   // Helper: fade-in transition gated on introComplete
   const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
@@ -234,7 +230,7 @@ export function Hero({ introComplete = true, skipTyping = false }: HeroProps) {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = 'color-mix(in oklch, var(--color-primary), transparent 92%)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; }}
               >
-                {locale === 'ar' ? 'تواصل معي' : 'Get in Touch'}
+                Get in Touch
               </button>
             </motion.div>
           </div>

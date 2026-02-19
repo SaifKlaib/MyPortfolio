@@ -1,9 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/routing';
-import { LanguageSwitcher } from '@/components/ui/language-switcher';
 import { Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '@/lib/data/constants';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -13,7 +12,6 @@ export function Navbar() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const t = useTranslations();
-  const locale = useLocale();
   const pathname = usePathname();
   const isHome = pathname === '/';
 
@@ -142,7 +140,6 @@ export function Navbar() {
 
           {/* Right side actions */}
           <div className="flex items-center gap-3 flex-shrink-0">
-            <LanguageSwitcher />
 
             {/* Hire Me CTA — desktop */}
             <motion.button
@@ -155,7 +152,7 @@ export function Navbar() {
                 color: 'var(--color-primary-foreground)',
               }}
             >
-              {locale === 'ar' ? 'تواصل معي' : 'Hire Me'}
+              Hire Me
             </motion.button>
 
             {/* Mobile hamburger */}
@@ -243,7 +240,7 @@ export function Navbar() {
                       color: 'var(--color-primary-foreground)',
                     }}
                   >
-                    {locale === 'ar' ? 'تواصل معي' : 'Hire Me'}
+                    Hire Me
                   </button>
                 </motion.div>
               </div>

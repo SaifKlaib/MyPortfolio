@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useLocale } from 'next-intl';
 import { Hero } from '@/components/sections/hero';
 import { MarqueeStrip } from '@/components/sections/marquee-strip';
 import { AboutSection } from '@/components/sections/about-section';
@@ -11,8 +10,7 @@ import { IntroScreen } from '@/components/ui/intro-screen';
 import { SITE_CONFIG } from '@/lib/data/constants';
 
 export function HomeClient() {
-  const locale = useLocale();
-  const name = SITE_CONFIG.name[locale as 'en' | 'ar'];
+  const name = SITE_CONFIG.name.en;
 
   // showIntro: the overlay is mounted
   // introComplete: hero content can appear

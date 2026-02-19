@@ -1,137 +1,177 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Sparkles } from 'lucide-react';
-import { useLocale, useTranslations } from 'next-intl';
+import { ExternalLink, Github, LayoutTemplate } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { Project } from '@/lib/types';
+
+// Accent colors cycle through primary / secondary / accent
+const accentColors = [
+  'var(--color-primary)',
+  'var(--color-secondary)',
+  'var(--color-accent)',
+];
 
 interface ProjectCardProps {
   project: Project;
   index: number;
+  showActions?: boolean;
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
-  const locale = useLocale();
+export function ProjectCard({ project, index, showActions = false }: ProjectCardProps) {
   const t = useTranslations('projects');
-  const title = project.title[locale as 'en' | 'ar'];
-  const description = project.description[locale as 'en' | 'ar'];
+  const title = project.title.en;
+  const description = project.description.en;
+  const accent = accentColors[index % accentColors.length];
+
+  const CardWrapper = project.liveUrl ? 'a' : 'div';
+  const wrapperProps = project.liveUrl
+    ? { href: project.liveUrl, target: '_blank', rel: 'noopener noreferrer' }
+    : {};
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
+    <motion.article
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -8 }}
-      className="group relative rounded-2xl border border-border bg-card overflow-hidden transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.65, delay: index * 0.09, ease: [0.16, 1, 0.3, 1] }}
+      className="group gradient-border card-lift relative bg-card rounded-[var(--radius)] border border-border overflow-hidden flex flex-col"
     >
-      {/* Featured badge */}
-      {project.featured && (
-        <div className="absolute top-4 right-4 z-10">
-          <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ delay: index * 0.1 + 0.3, type: "spring" }}
-            className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary/90 text-primary-foreground text-xs font-semibold backdrop-blur-sm"
+      {/* Coloured top strip */}
+      <div
+        className="h-1.5 w-full flex-shrink-0 transition-all duration-300 group-hover:h-2"
+        style={{ background: accent }}
+      />
+
+      {/* Thumbnail */}
+      <CardWrapper
+        {...wrapperProps}
+        className="relative aspect-video overflow-hidden block"
+        style={!project.thumbnail ? { background: `color-mix(in oklch, ${accent}, var(--color-surface) 90%)` } : undefined}
+      >
+        {project.thumbnail ? (
+          <Image
+            src={project.thumbnail}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        ) : (
+          <div
+            className="h-full w-full flex items-center justify-center"
+            style={{ background: `color-mix(in oklch, ${accent}, var(--color-surface) 90%)` }}
           >
-            <Sparkles className="h-3 w-3" />
+            <span
+              className="font-display font-bold select-none pointer-events-none leading-none"
+              style={{
+                fontSize: 'clamp(6rem, 15vw, 9rem)',
+                color: 'transparent',
+                WebkitTextStroke: `1.5px color-mix(in oklch, ${accent}, transparent 60%)`,
+              }}
+              aria-hidden="true"
+            >
+              {String(index + 1).padStart(2, '0')}
+            </span>
+          </div>
+        )}
+
+        {/* Featured badge */}
+        {project.featured && (
+          <motion.div
+            initial={{ scale: 0, rotate: -12 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ delay: index * 0.09 + 0.3, type: 'spring', stiffness: 240 }}
+            className="absolute top-3 end-3 text-[0.6rem] tracking-[0.2em] uppercase font-sans font-semibold px-2.5 py-1 rounded-full z-10"
+            style={{
+              background: accent,
+              color: index === 2 ? 'var(--color-foreground)' : 'var(--color-primary-foreground)',
+            }}
+          >
             Featured
           </motion.div>
-        </div>
-      )}
+        )}
 
-      {/* Thumbnail with gradient overlay */}
-      <div className="relative w-full h-48 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 overflow-hidden">
-        {/* Placeholder with animated pattern */}
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <motion.div
-            animate={{
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="text-8xl opacity-20"
-          >
-            🎨
-          </motion.div>
-        </motion.div>
-
-        {/* Hover overlay with glassmorphism */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent backdrop-blur-sm flex items-center justify-center gap-3"
-        >
+        {/* Hover overlay */}
+        <div className="absolute inset-0 flex items-end justify-start p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10">
           {project.liveUrl && (
-            <motion.a
-              initial={{ y: 20, opacity: 0 }}
-              whileHover={{ scale: 1.1, y: 0, opacity: 1 }}
-              whileTap={{ scale: 0.95 }}
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <ExternalLink className="h-4 w-4" />
+            <span className="inline-flex items-center gap-1.5 text-white text-xs font-sans font-semibold">
+              <ExternalLink className="h-3.5 w-3.5" />
               {t('viewLive')}
-            </motion.a>
+            </span>
           )}
           {project.githubUrl && (
-            <motion.a
-              initial={{ y: 20, opacity: 0 }}
-              whileHover={{ scale: 1.1, y: 0, opacity: 1 }}
-              whileTap={{ scale: 0.95 }}
+            <a
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-card/90 text-foreground rounded-lg hover:bg-card transition-colors font-medium border border-border"
               onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1.5 ms-3 text-white text-xs font-sans font-semibold"
             >
-              <Github className="h-4 w-4" />
+              <Github className="h-3.5 w-3.5" />
               {t('viewCode')}
-            </motion.a>
+            </a>
           )}
-        </motion.div>
-      </div>
+        </div>
+      </CardWrapper>
 
       {/* Content */}
-      <div className="p-6 space-y-4">
-        <div>
-          <h3 className="text-xl font-display font-semibold mb-2 group-hover:text-primary transition-colors">
-            {title}
+      <div className="p-7 flex flex-col gap-4 flex-1">
+        <div className="flex-1">
+          <h3
+            className="font-display font-bold text-xl leading-tight mb-3 transition-colors duration-200"
+            style={{ color: 'var(--color-card-foreground)' }}
+          >
+            <span className="group-hover:text-[var(--color-primary)] transition-colors duration-200 [transition-property:color]"
+              style={{ '--color-primary': accent } as React.CSSProperties}
+            >
+              {title}
+            </span>
           </h3>
-          <p className="text-muted-foreground text-sm leading-relaxed">
+          <p className="text-base text-muted-foreground font-sans leading-relaxed">
             {description}
           </p>
         </div>
 
-        {/* Tags with stagger animation */}
-        <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag, i) => (
-            <motion.span
-              key={tag}
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors"
-            >
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5">
+          {project.tags.map((tag) => (
+            <span key={tag} className="tag-pill">
               {tag}
-            </motion.span>
+            </span>
           ))}
         </div>
-      </div>
 
-      {/* Decorative corner accent */}
-      <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-primary/5 to-transparent rounded-tl-full" />
-    </motion.div>
+        {/* Action buttons */}
+        {showActions && (
+          <div className="flex gap-2 mt-auto pt-2 border-t border-border">
+            <a
+              href={`/en/projects/${project.id}`}
+              className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-sans font-semibold border border-border bg-surface hover:bg-muted transition-colors"
+              style={{ color: 'var(--color-foreground)' }}
+            >
+              <LayoutTemplate className="h-3.5 w-3.5 shrink-0" />
+              View Details
+            </a>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-sans font-semibold transition-colors"
+                style={{
+                  background: accent,
+                  color: index % 3 === 2 ? 'var(--color-foreground)' : 'var(--color-primary-foreground)',
+                }}
+              >
+                <ExternalLink className="h-3.5 w-3.5 shrink-0" />
+                Live Demo
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+    </motion.article>
   );
 }

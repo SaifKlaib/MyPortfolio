@@ -11,37 +11,23 @@ interface SkillBadgeProps {
 export function SkillBadge({ skill, index }: SkillBadgeProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
-      whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+      initial={{ opacity: 0, scale: 0.85, y: 10 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{
-        duration: 0.4,
-        delay: index * 0.05,
-        type: "spring",
-        stiffness: 200,
+        duration: 0.45,
+        delay: index * 0.035,
+        ease: [0.16, 1, 0.3, 1],
       }}
-      whileHover={{
-        scale: 1.1,
-        rotate: [0, -5, 5, 0],
-        transition: { duration: 0.3 }
-      }}
-      className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-br from-card to-card/50 border border-border hover:border-primary/50 transition-all cursor-default shadow-sm hover:shadow-md hover:shadow-primary/10"
+      whileHover={{ y: -3, scale: 1.04 }}
+      className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-card border border-border rounded-[var(--radius)] hover:border-primary hover:bg-muted transition-all duration-200 cursor-default shadow-sm hover:shadow-md"
     >
-      <motion.span
-        animate={{
-          rotate: [0, 10, -10, 0],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: index * 0.1,
-        }}
-        className="text-2xl"
-      >
+      <span className="text-lg leading-none" role="img" aria-label={skill.name}>
         {skill.icon}
-      </motion.span>
-      <span className="font-medium text-sm">{skill.name}</span>
+      </span>
+      <span className="text-xs font-sans font-medium text-muted-foreground group-hover:text-primary">
+        {skill.name}
+      </span>
     </motion.div>
   );
 }
