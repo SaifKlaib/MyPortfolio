@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { User, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { SkillBadge } from '@/components/ui/skill-badge';
 import { skills } from '@/lib/data/skills';
 import { SITE_CONFIG } from '@/lib/data/constants';
@@ -46,61 +46,8 @@ export function AboutSection() {
         <div className="rule-gradient mt-5 max-w-md" />
       </motion.div>
 
-      {/* Two-column: photo left, text right */}
-      <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10 lg:gap-16 items-start mb-16">
-
-        {/* Photo placeholder */}
-        <motion.div
-          variants={revealUp(0.1)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="flex justify-center lg:justify-start"
-        >
-          <div className="relative group">
-            {/* Main photo frame */}
-            <motion.div
-              className="relative overflow-hidden flex flex-col items-center justify-center gap-3"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                width: 220,
-                height: 280,
-                borderRadius: '1.5rem',
-                background: 'linear-gradient(145deg, var(--color-muted) 0%, var(--color-surface-alt) 100%)',
-                border: '2px dashed var(--color-border-strong)',
-                boxShadow: '0 20px 60px color-mix(in oklch, var(--color-primary), transparent 82%)',
-              }}
-              title="Replace with your photo"
-            >
-              <User
-                className="text-muted-foreground/30"
-                style={{ width: 56, height: 56 }}
-                strokeWidth={1.5}
-              />
-              <span
-                className="font-sans tracking-[0.2em] uppercase text-center px-4"
-                style={{ fontSize: '0.6rem', color: 'var(--color-muted-foreground)', opacity: 0.45, lineHeight: 1.6 }}
-              >
-                Your Photo Here
-              </span>
-            </motion.div>
-
-            {/* Decorative corner blobs */}
-            <div
-              className="absolute -top-4 -start-4 w-16 h-16 rounded-full pointer-events-none opacity-40"
-              style={{ background: 'var(--color-primary)', filter: 'blur(20px)' }}
-              aria-hidden="true"
-            />
-            <div
-              className="absolute -bottom-4 -end-4 w-16 h-16 rounded-full pointer-events-none opacity-30"
-              style={{ background: 'var(--color-secondary)', filter: 'blur(20px)' }}
-              aria-hidden="true"
-            />
-          </div>
-        </motion.div>
-
-        {/* Text content */}
+      {/* Text content */}
+      <div className="mb-16">
         <motion.div
           variants={revealUp(0.15)}
           initial="hidden"
