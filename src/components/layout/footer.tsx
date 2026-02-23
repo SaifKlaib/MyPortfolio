@@ -1,14 +1,11 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { SOCIAL_LINKS } from '@/lib/data/constants';
 import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
 
 const iconMap = { github: Github, linkedin: Linkedin, twitter: Twitter, email: Mail };
 
 export function Footer() {
-  const t = useTranslations('footer');
-  const currentYear = new Date().getFullYear();
 
   return (
     <footer style={{ background: 'var(--color-primary)', color: 'var(--color-primary-foreground)' }}>
@@ -28,56 +25,8 @@ export function Footer() {
         </svg>
       </div>
 
-      {/* Marquee band */}
-      <div
-        className="py-3 marquee-track overflow-hidden"
-        style={{
-          borderTop: '1px solid color-mix(in oklch, var(--color-primary-foreground), transparent 80%)',
-          borderBottom: '1px solid color-mix(in oklch, var(--color-primary-foreground), transparent 80%)',
-          background: 'color-mix(in oklch, var(--color-primary), black 15%)',
-        }}
-      >
-        <div className="marquee-inner">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <span
-              key={i}
-              className="inline-flex items-center gap-5 mx-5 font-sans text-[0.6rem] tracking-[0.25em] uppercase"
-              style={{ opacity: 0.7 }}
-            >
-              Full Stack Developer
-              <span
-                className="w-1.5 h-1.5 rounded-full inline-block flex-shrink-0"
-                style={{ background: 'var(--color-accent)' }}
-              />
-              Open to Work
-              <span
-                className="w-1.5 h-1.5 rounded-full inline-block flex-shrink-0"
-                style={{ background: 'var(--color-accent)' }}
-              />
-            </span>
-          ))}
-        </div>
-      </div>
-
       <div className="container mx-auto px-6 md:px-12 lg:px-16 py-10">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-
-          {/* Wordmark */}
-          <div>
-            <p
-              className="font-display font-bold text-base tracking-tight uppercase mb-0.5"
-              style={{ letterSpacing: '0.08em', color: 'var(--color-primary-foreground)' }}
-            >
-              PORTFOLIO
-            </p>
-            <p
-              className="text-xs font-sans"
-              style={{ color: 'color-mix(in oklch, var(--color-primary-foreground), transparent 45%)' }}
-            >
-              © {currentYear}. {t('rights')}.
-            </p>
-          </div>
-
+        <div className="flex items-center justify-center">
           {/* Social icons */}
           <div className="flex items-center gap-3">
             {SOCIAL_LINKS.map((link) => {
@@ -112,13 +61,6 @@ export function Footer() {
               );
             })}
           </div>
-
-          <p
-            className="text-[0.65rem] tracking-[0.08em] font-sans"
-            style={{ color: 'color-mix(in oklch, var(--color-primary-foreground), transparent 50%)' }}
-          >
-            {t('built')}
-          </p>
         </div>
       </div>
     </footer>
